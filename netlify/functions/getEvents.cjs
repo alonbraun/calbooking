@@ -16,6 +16,7 @@ exports.handler = async function (event, context) {
         Authorization: `Bearer ${token}`,
       },
       params: {
+        user: "https://api.calendly.com/users/CHGDJA2RVBTZVTLI",
         sort: "start_time:asc",
       },
     });
