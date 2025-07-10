@@ -1,0 +1,60 @@
+openapi: 3.1.0
+info:
+  title: Calendly GPT Integration API
+  version: 1.0.0
+servers:
+  - url: https://your-netlify-site.netlify.app/.netlify/functions
+paths:
+  /getEvents:
+    get:
+      summary: Get upcoming meetings
+      operationId: getEvents
+      responses:
+        '200':
+          description: List of events
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  events:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        start_time:
+                          type: string
+                        status:
+                          type: string
+
+  /createInvitee:
+    post:
+      summary: Schedule a new meeting
+      operationId: createInvitee
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                event_start_time:
+                  type: string
+                event_note:
+                  type: string
+      responses:
+        '200':
+          description: Meeting scheduled
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  confirmation:
+                    type: string
